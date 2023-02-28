@@ -4,20 +4,39 @@ search_path: "luts:filmic"
 strictparsing: true
 luma: [0.2126, 0.7152, 0.0722]
 
-description: ACES and blender combined colorspaces
+description: LRTRX color
 
 roles:
-  color_picking: Output - sRGB
-  color_timing: ACES - ACEScc
-  compositing_linear: ACES - ACEScg
-  compositing_log: Input - ADX - ADX10
-  data: Utility - Raw
-  default: ACES - ACES2065-1
-  matte_paint: Utility - sRGB - Texture
-  reference: Utility - Raw
-  rendering: ACES - ACEScg
-  scene_linear: ACES - ACEScg
-  texture_paint: ACES - ACEScc
+  reference: Linear
+
+  # Internal scene linear space
+  scene_linear: Linear
+  rendering: Linear
+
+  # Default color space for byte image
+  default_byte: sRGB
+
+  # Default color space for float images
+  default_float: Linear
+
+  # Default color space sequencer is working in
+  default_sequencer: sRGB
+
+  # Distribution of colors in color picker
+  color_picking: sRGB
+
+  # Non-color data
+  data: Non-Color
+
+  # For interop between configs, and to determine XYZ for rendering
+  aces_interchange: Linear ACES
+
+  # Specified by OCIO, not used in Blender
+  color_timing: Filmic Log
+  compositing_log: Filmic Log
+  default: Linear
+  matte_paint: Linear
+  texture_paint: Linear
 
 displays:
   sRGB:
